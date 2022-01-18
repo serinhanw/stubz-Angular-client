@@ -8,21 +8,65 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+
 import { FormsModule } from '@angular/forms';
-import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { DirectorCardComponent } from './director-card/director-card.component';
+import { GenreCardComponent } from './genre-card/genre-card.component';
+import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { NavbarComponent } from './navbar/navbar.component';
+// import { MainViewComponent } from './main-view/main-view.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
+
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  // { path: 'movies', component: MovieCardComponent },
+  // { path: 'movies', component: NavbarComponent },
+  { path: 'movies', component: MovieCardComponent },
+  // { path: 'user', component: NavbarComponent },
+  { path: 'user', component: UserProfileComponent },
+  // { path: 'favorites', component: NavbarComponent },
+  { path: 'favorites', component: UserFavoritesComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
-    UserLoginFormComponent
+    UserLoginFormComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+    DirectorCardComponent,
+    GenreCardComponent,
+    SynopsisCardComponent,
+    UserProfileComponent,
+    ProfileEditComponent,
+    NavbarComponent,
+    // MainViewComponent,
+    UserFavoritesComponent,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -33,7 +77,14 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatProgressBarModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

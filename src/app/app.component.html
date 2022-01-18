@@ -1,12 +1,46 @@
-<div class="main-page">
+<!-- <div class="main-page">
   <h1>
     Welcome to Stubz!
   </h1>
   <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
     Sign Up
   </button>
-  <button mat-raised-button (click)="openUserLoginDialog()" color="primary">
-    <!-- <button mat-raised-button color="primary"> -->
+  <button mat-raised-button (click)="openUserLoginDialog()" style="margin-right: 10px;" color="primary">
     Login
   </button>
+  <button mat-raised-button (click)="openMoviesDialog()" color="primary">
+    All Movies
+  </button>
+</div> -->
+
+<!-- <router-outlet></router-outlet> -->
+
+
+<div id="app__container" class="mat-app-background">
+  <router-outlet></router-outlet>
+  <div id="loader__container" *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="wave">
+    <mat-toolbar *ngIf="loggedIn">
+      <span (click)="toHome()">{{ dynamicTitle }}</span>
+      <div id="button__container">
+        <button mat-icon-button title="Home" (click)="toHome()" aria-label="Change user data">
+          <mat-icon *ngIf="!navigationHome">home</mat-icon>
+          <mat-icon *ngIf="navigationHome">home</mat-icon>
+        </button>
+        <button mat-icon-button title="User Favorites" (click)="toFavorites()" aria-label="Change user data">
+          <mat-icon *ngIf="!navigationFavorites">favorite</mat-icon>
+          <mat-icon *ngIf="navigationFavorites">favorite</mat-icon>
+        </button>
+        <button mat-icon-button title="User account" (click)="toUser()" aria-label="Change user data">
+          <mat-icon *ngIf="!navigationUser">account_circle</mat-icon>
+          <mat-icon *ngIf="navigationUser">account_circle</mat-icon>
+        </button>
+        <button mat-icon-button title="Logout" (click)="logout()" aria-label="Logout">
+          <mat-icon>power_settings_new</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </div>
 </div>

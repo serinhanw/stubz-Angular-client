@@ -1,0 +1,70 @@
+.mat-card {
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  // background-color: #27273f;
+  background-image: linear-gradient(45deg, #b81365, #bfab25);
+  max-width: 600px;
+  width: 350px;
+  
+  .card-content {
+      font-size: 20px;
+      font-weight: 400;
+    b { 
+      font-weight: 200;
+    }
+  }
+  .mat-icon-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+  .mat-card-header {
+    text-align: center;
+    // width: 300px;
+  }
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
+
+.mat-card-title {
+  font-size: 48px;
+  padding-bottom: 30px;
+  width: 400px;
+}
+.repeating-linear {
+  color: pink;
+  border: 8px solid pink;
+  border-image: repeating-linear-gradient(30deg, #bfab25, #bfab25 1%, #b81365 1%, #bfab25 8%) 10;
+}
+.repeating-linear:hover {
+  border-image: repeating-linear-gradient( 45deg, #b81365, #b81365 1%, #bfab25 1%, #b81365 8%) 10;
+  color: purple;
+}
+
+button {
+  font-family: 'Oswald', sans-serif;
+  color: #fff;
+  font-weight: 300;
+  font-size: 15px;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 3px;
+  padding: 3px 18px;
+  cursor: pointer;
+}
+
+#delete-btn {
+  color: #27273f;
+  border: transparent;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}

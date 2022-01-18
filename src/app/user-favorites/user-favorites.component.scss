@@ -1,0 +1,82 @@
+app-user-favorites {
+  display: flex;
+  flex-direction: column;
+}
+.favorites-wrapper {
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 45px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    @media screen and (max-width: 500px) {
+      padding-top: 20px;
+    }
+  }
+  .linear-wipe {
+    text-align: center;
+    background: linear-gradient(to right, #b81365 10%, #bfab25 40%, #bfab25 60%, #b81365 70% );
+    background-size: 200% auto;
+    
+    color: #000;
+    background-clip: text;
+    // text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: shine 5s linear infinite;
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+}
+}
+
+.favorites {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 30px;
+  // background-color: #202136;
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  background-color: #27273f;
+  max-width: 300px;
+  width: 300px;
+  .mat-icon-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+  img {
+    max-width: 250px;
+  }
+  .mat-card-header {
+    text-align: center;
+  }
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
+
+.remove-icon {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+<div class="director-dialog-wrapper">
+  <button mat-icon-button color="dark" [mat-dialog-close]="true">
+    <mat-icon class="close">close</mat-icon>
+  </button>
+  <h1>{{ data.Name }}</h1>
+  <h4>({{ data.Birthyear | date: "yyyy":"UTC" }})</h4>
+  <p>{{ data.Bio }}</p>
+</div>

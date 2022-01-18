@@ -1,39 +1,90 @@
-import { Component } from '@angular/core';
-import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
-import { MatDialog } from '@angular/material/dialog';
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+//   styleUrls: ['./app.component.scss']
+// })
+// export class AppComponent {
+//   title = 'myFlix-Angular-client';
+
+// }
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApplicationRef } from '@angular/core';
+
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
   title = 'myFlix-Angular-client';
 
-  constructor(public dialog: MatDialog) { }
-  // This is the function that will open the dialog when the signup button is clicked  
-  openUserRegistrationDialog(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      // Assigning the dialog a width
-      width: '280px'
-    });
+  constructor(
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private overlay: OverlayContainer
+  ) { }
+
+  /** Determines loader on top of page. */
+  loading: boolean = false
+  // loggedIn: boolean = false
+  loggedIn: boolean = true
+  /** Alters title depending on screensize. */
+  dynamicTitle: string = 'Stubz'
+  /** Determines which menu symbol is highlighted. */
+  navigationHome: boolean = true
+  /** Determines which menu symbol is highlighted. */
+  navigationUser: boolean = true
+  /** Determines which menu symbol is highlighted. */
+  navigationFavorites: boolean = true
+
+  ngOnInit(): void {
+    this.getWindowWidth();
+    window.addEventListener('resize', this.getWindowWidth);
   }
-  // This is the function that will open the dialog when the login button is clicked  
-  openUserLoginDialog(): void {
-    this.dialog.open(UserLoginFormComponent, {
-      // Assigning the dialog a width
-      width: '280px'
-    });
+
+  /** Checks screen width and then sets a long or short page title. */
+  getWindowWidth = (): void => {
+    if (window.innerWidth < 768) {
+      this.dynamicTitle = 'Stubz'
+    } else {
+      this.dynamicTitle = 'Stubz'
+    }
+  }
+
+  /** Sets login status. */
+  public setLoggedIn(value: boolean): void {
+    this.loggedIn = value;
+  }
+
+  /** Navigates to home. */
+  toHome(): void {
+    this.router.navigate(['/movies']);
+  }
+
+  /** Navigates to user view. */
+  toUser(): void {
+    this.router.navigate(['user']);
+  }
+
+  toFavorites(): void {
+    this.router.navigate(['favorites']);
+  }
+
+  /** Logs user out. */
+  logout(): void {
+    // this.loggedIn = false;
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.snackBar.open('You\'ve logged out.', 'OK', { duration: 5000 });
+    this.router.navigate(['']);
   }
 }
-
-//   constructor(public dialog: MatDialog) { }
-//   // This is the function that will open the dialog when the signup button is clicked  
-//   openUserRegistrationDialog(): void {
-//     this.dialog.open(UserRegistrationFormComponent, {
-//       // Assigning the dialog a width
-//       width: '280px'
-//     });
-//   }
-// }

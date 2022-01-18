@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Hi, {{ user.FirstName }} 👋
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <p><b>Username</b>: {{ user.username }}</p>
+    <p><b>Email</b>: {{ user.email }}</p>
+    <p><b>Birthday</b>: {{ user.Birthday | date: "MM/dd/yyyy":"UTC" }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <button class="float-right" mat-raised-button color="primary" (click)="openEditUserProfileDialog()"> -->
+    <div class="repeating-linear"> <button (click)="openEditUserProfileDialog()">
+        Edit
+      </button>
+    </div>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button id="delete-btn" (click)="deleteAccount()">
+      Delete Account
+    </button>
+  </mat-card-actions>
+</mat-card>

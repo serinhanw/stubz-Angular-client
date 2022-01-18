@@ -1,0 +1,9 @@
+<div class="synopsis-dialog-wrapper">
+  <button mat-icon-button color="dark" [mat-dialog-close]="true">
+    <mat-icon class="close">close</mat-icon>
+  </button>
+  <h1>{{ data.Title }}</h1>
+  <h4>Released: {{ data.Year | date: "yyyy":"UTC" }}</h4>
+  <h3 style="font-weight: 400; margin-bottom: -1px;">Description:</h3>
+  <p>{{ data.Description }}</p>
+</div>

@@ -5,27 +5,22 @@
   <mat-card-content>
     <form>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text" name="Username"
-          pattern="[a-zA-Z0-9]+" minlength="5" required>
-        <mat-error>
-          An alphanumeric username with a minimum of 5 characters is required!
-        </mat-error>
+        <input matInput [(ngModel)]="userData.FirstName" placeholder="First Name" type="text" name="FirstName"
+          required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="userData.username" placeholder="Username" type="text" name="Username" required />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Password" type="password" placeholder="Password" name="Password" required>
-        <mat-error>
-          Password is required!
-        </mat-error>
+        <input matInput [(ngModel)]="userData.password" type="password" placeholder="Password" name="Password"
+          required />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Email" type="email" placeholder="Email" name="Email"
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" r equired>
-        <mat-error>
-          Please enter a valid Email address.
-        </mat-error>
+        <input matInput [(ngModel)]="userData.email" type="email" placeholder="Email" name="Email" required />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="userData.Birthday" type="date" placeholder="Birthday" name="Birthday">
+        <input matInput [(ngModel)]="userData.Birthday" type="date" placeholder="Birthday" name="Birthday" />
       </mat-form-field>
     </form>
   </mat-card-content>

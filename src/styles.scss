@@ -1,39 +1,126 @@
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+
+// @use '@angular/material' as mat;
+
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
+
+
+// @include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$stubz-Angular-client-primary: mat.define-palette(mat.$indigo-palette);
-$stubz-Angular-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+
+// $stubz-Angular-client-primary: mat.define-palette(mat.$indigo-palette);
+// $stubz-Angular-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
 
 // The warn palette is optional (defaults to red).
-$stubz-Angular-client-warn: mat.define-palette(mat.$red-palette);
+
+
+// $stubz-Angular-client-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$stubz-Angular-client-theme: mat.define-light-theme((
-  color: (
-    primary: $stubz-Angular-client-primary,
-    accent: $stubz-Angular-client-accent,
-    warn: $stubz-Angular-client-warn,
-  )
-));
+
+
+// $stubz-Angular-client-theme: mat.define-light-theme((
+//   color: (
+//     primary: $stubz-Angular-client-primary,
+//     accent: $stubz-Angular-client-accent,
+//     warn: $stubz-Angular-client-warn,
+//   )
+// ));
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($stubz-Angular-client-theme);
+
+
+// @include mat.all-component-themes($stubz-Angular-client-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  // height: 100vh;
+  height: 100%;
+  // width: 100vw;
+}
+
+body {
+  // position: relative;
+  font-family: Oswald, "Helvetica Neue", sans-serif;
+  // background-color: #202136; #050e25
+  background-color: #131834;
+
+}
+
+#app__container {
+  background-color: #131834;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  // padding: calc(60px + max(2%, 10px)) max(2%, 10px) max(2%, 10px);
+}
+
+
+.mat-raised-button {
+  margin: 0;
+  &.mat-primary {
+    // background-image: linear-gradient(45deg, #5500fc, #cd03ff);
+    // background-image: linear-gradient(45deg, #bfab25, #b81365);
+    background-color: #43465e;
+  }
+  &.mat-accent {
+    // background-image: linear-gradient(45deg, #009688, #8bc34a);
+    color: #fff;
+  }
+}
+
+.mat-dialog-container {
+  // background-color: #27273f;
+  background-color: #43465e;
+  .mat-form-field {
+    font-size: 14px;
+    &.mat-focused {
+      .mat-form-field-label {
+        // color: #fe01aa;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  // background-color: #27273f;
+  background-color: #131834;
+  margin: 10px;
+}
