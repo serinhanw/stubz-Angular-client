@@ -1,27 +1,19 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Stubz</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="user">Profile</a>
-      <a mat-list-item href="favorites">Favorites</a>
-      <a mat-list-item href="movies">Movies</a>
-      <button mat-raised-button color="primary" class="logout-btn" (click)="userLogout()">
-        Logout
+<div class="wave">
+  <mat-toolbar>
+    <span (click)="toHome()">Stubz</span>
+    <div id="button__container">
+      <button mat-icon-button title="Home" (click)="toHome()" aria-label="Change user data">
+        <mat-icon>home</mat-icon>
       </button>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      <button mat-icon-button title="User Favorites" (click)="toFavorites()" aria-label="Change user data">
+        <mat-icon>favorite</mat-icon>
       </button>
-      <!-- <h1> Stubz </h1> -->
-    </mat-toolbar>
-    <app-movie-card *ngIf="router.url === '/movies'"></app-movie-card>
-    <app-user-profile *ngIf="router.url === '/user'"></app-user-profile>
-    <app-user-favorites *ngIf="router.url === '/favorites'"></app-user-favorites>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      <button mat-icon-button title="User account" (click)="toUser()" aria-label="Change user data">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button title="Logout" (click)="userLogout()" aria-label="Logout">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>

@@ -13,10 +13,13 @@ import { MatDialog } from '@angular/material/dialog';
 export class WelcomePageComponent implements OnInit {
 
   // constructor(public dialog: MatDialog, private app: AppComponent) { }
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog
+    // private app: AppComponent
+  ) { }
 
   // user: string | null = localStorage.getItem('username')
-  // /** Only gets set when it's the first login after sign up. */
+  /** Only gets set when it's the first login after sign up. */
   // firstLogin: string | null = localStorage.getItem('firstLogin')
   ngOnInit(): void {
     // this.app.setLoggedIn(false);

@@ -8,7 +8,7 @@ import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { AppComponent } from '../app.component';
-// import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 const username = localStorage.getItem('user');
 
@@ -19,66 +19,29 @@ const username = localStorage.getItem('user');
 })
 export class MovieCardComponent implements OnInit {
   user: any = {};
-  movies: any[] = []; //allMovies
-  // displayMovies: any[] = [] //movies
-  // public nothingFound: boolean = false
-  favoriteMovies: any[] = []; //users favorites as IDs
-  // showFavorites: boolean = false //if true, only fav movies shown
+  movies: any[] = [];
+  favoriteMovies: any[] = [];
   directors: any[] = [];
-  // selectedMovie: any = false //If true the movie view will only show one movie with advanced information.
-
-
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public app: AppComponent,
+    // public app: AppComponent,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.app.navigationHome = true;
-    this.app.navigationUser = true;
-    this.app.setLoggedIn(true);
+    // this.app.navigationHome = true;
+    // this.app.navigationUser = true;
+    // this.app.navigationUser = false;
+
+    // this.app.setLoggedIn(true);
 
     this.getMovies();
     this.getUser(username);
     this.getUserFavorites();
-
-    // this.setSelectedMovie();
   }
-
-  // fetchData = async (): Promise<boolean> => {
-  //   this.app.loading = true;
-  //   try {
-
-  //     // Get user data
-  //     this.fetchApiData.getUser(username).subscribe((response: any) => {
-  //       this.user = response.user;
-  //       response.user.favorites.forEach((favorite: { _id: string }) => this.favoriteMovies.push(favorite._id))
-  //     })
-
-  //     await new Promise((resolve) => {
-  //       // Get movies and sort them alphabetically
-  //       this.fetchApiData.getAllMovies().subscribe((response: any) => {
-  //         this.movies = response.sort((a: { title: string }, b: { title: string }): number => {
-  //           if (a.title < b.title) { return -1; }
-  //           if (a.title > b.title) { return 1; }
-  //           return 0;
-  //         });
-  //         resolve(true);
-  //       });
-  //     });
-
-  //     this.movies = this.movies;
-  //     this.app.loading = false;
-  //     return true
-  //   } catch {
-  //     this.app.loading = false;
-  //     return false
-  //   }
-  // }
 
 
   getMovies(): void {
@@ -137,33 +100,6 @@ export class MovieCardComponent implements OnInit {
   //   });
   // }
 
-  // search = (): void => {
-  //   this.nothingFound = false;
-  //   // A copy of all movies to preserve the original array.
-  //   let searchArray = this.movies;
-  //   // Set favorites
-  //   if (this.showFavorites) {
-  //     const resetToFavorites = this.movies.filter((movie: { _id: string }): boolean => this.favoriteMovies.includes(movie._id));
-  //     searchArray = resetToFavorites;
-  //     return this.getUserFavorites();
-  //   };
-  //   if (this.displayMovies.length === 0) {
-  //     this.nothingFound = true;
-  //   };
-  // }
-  // /** Toggle function to filter all movies for favorites. */
-  // favoritesToggle = (): void => {
-  //   this.showFavorites = !this.showFavorites
-  //   if (this.showFavorites) {
-  //     this.displayMovies = this.movies.filter((movie: { _id: string }) => this.favoriteMovies.includes(movie._id));
-  //   } else {
-  //     this.displayMovies = this.movies;
-  //   }
-  //   // this.getUserFavorites();
-  //   this.search();
-  // }
-
-
 
   getUserFavorites(): void {
     const user = localStorage.getItem('user');
@@ -211,15 +147,6 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
-
-  // isFavorites(id: TemplateStringsArray): boolean {
-  //   return this.favoriteMovies.includes(id) ? true : false;
-  // }
-
-  // isFavorites(movieId: string): boolean {
-  //   return this.favoriteMovies.some((movie) => movie._id === movieId);
-  // }
-
   isFavorites(movieId: any): any {
     if (this.favoriteMovies.includes(movieId)) {
       return true;
@@ -228,13 +155,5 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
-  // toggleFavs(movie: any): void {
-  //   this.isFavorites(movie._id)
-  //     ? this.removeFromFavorites(movie._id, movie.Title)
-  //     : this.addToFavorites(movie._id, movie.Title);
-  // : this.addToFavorites(movie._id);
-
 }
-
-// }
 
