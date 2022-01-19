@@ -24,10 +24,16 @@ export class NavbarComponent {
     this.router.navigate(['user']);
   }
 
+  /** Navigates to favorites view. */
   toFavorites(): void {
     this.router.navigate(['favorites']);
   }
 
+  /**
+   * Logs out the user
+   * Clears the localstorage
+   * Reloads the page
+   */
   userLogout(): void {
     localStorage.clear();
     this.snackBar.open('You successfully logged out! 👋', 'Catch ya later!', {

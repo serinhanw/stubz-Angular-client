@@ -10,6 +10,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class ProfileEditComponent implements OnInit {
 
+  /**
+   * Required input fields for updating the user information
+   */
   @Input() userData = { FirstName: '', username: '', password: '', email: '', Birthday: '' };
 
   constructor(
@@ -21,6 +24,9 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Edit user information
+   */
   editUserInfo(): void {
     this.fetchUserData.editUser(this.userData).subscribe(
       (res) => {

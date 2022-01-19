@@ -24,10 +24,16 @@ export class UserProfileComponent implements OnInit {
     public router: Router,
   ) { }
 
+  /**
+   * When component opens, gets the user information
+   */
   ngOnInit(): void {
     this.getUser();
   }
 
+  /**
+   * Gets the user info from backend
+   */
   getUser(): void {
     let username = localStorage.getItem('user');
     this.fetchApiData.getUser(username).subscribe((res: any) => {
@@ -39,6 +45,9 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Gets the list of user's favorite movies from backend
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.movies = res;
@@ -68,6 +77,9 @@ export class UserProfileComponent implements OnInit {
   //   });
   // }
 
+  /**
+   * Deletes the user account
+   */
   deleteAccount(): void {
     this.fetchApiData.deleteUser().subscribe(() => {
       localStorage.clear();
@@ -77,6 +89,10 @@ export class UserProfileComponent implements OnInit {
       });
     });
   }
+
+  /**
+   * Opens a dialog to edit the user information
+   */
   openEditUserProfileDialog(): void {
     this.dialog.open(ProfileEditComponent, {
       // Assigning the dialog a width

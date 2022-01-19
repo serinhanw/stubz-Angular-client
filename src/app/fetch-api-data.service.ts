@@ -17,7 +17,11 @@ export class FetchApiDataService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  // Making the api call for the user registration endpoint
+  /**
+   * Making an api call for the user registration endpoint
+   * @param userDetails 
+   * @returns status message: success or error
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -27,7 +31,11 @@ export class FetchApiDataService {
     );
   }
 
-  // User login
+  /**
+   * Making an api call for the user login endpoint
+   * @param userDetails 
+   * @returns status message: success or error
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -35,7 +43,10 @@ export class FetchApiDataService {
     );
   }
 
-  // Get all movies
+  /**
+   * Making an API call to get all movies
+   * @returns a list (array) of movies
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -49,7 +60,11 @@ export class FetchApiDataService {
     );
   }
 
-  // Get one movie
+  /**
+    * Make an API call to get information about a specific movie
+    * @param title 
+    * @returns Object including data about a specific movie
+  */
   getOneMovie(title: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/${title}`, {
@@ -63,7 +78,11 @@ export class FetchApiDataService {
     );
   }
 
-  // Get director
+  /**
+   * Makes an API call to get information about a specific director
+   * @param name 
+   * @returns Object including data about a specific director
+ */
   getDirector(name: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/directors/${name}`, {
@@ -77,7 +96,11 @@ export class FetchApiDataService {
     );
   }
 
-  // Get genre
+  /**
+   * Makes an API call to get information about a specific genre
+   * @param genre 
+   * @returns Object including data about a specific genre
+   */
   getGenre(genre: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + `movies/genres/${genre}`, {
@@ -92,7 +115,11 @@ export class FetchApiDataService {
   }
 
 
-  // Get user
+  /**
+   * Makes an API call to get information about a user
+   * @param user 
+   * @returns Object consists of information about a user
+   */
   getUser(user: any): Observable<any> {
     // getUser(): Observable<any> {
     // const user = localStorage.getItem('user');
@@ -109,7 +136,11 @@ export class FetchApiDataService {
   }
 
 
-  // Get favorite movies
+  /**
+   * Makes an API call to get the list of favorite movies
+   * @param user 
+   * @returns a list (array) of favorite movies
+   */
   getFavoriteMovies(user: any): Observable<any> {
     // getFavoriteMovies(): Observable<any> {
     // const user = localStorage.getItem('id');
@@ -126,8 +157,11 @@ export class FetchApiDataService {
   }
 
 
-  // Add a movie to favorite Movies
-  // addMovie(user: any, movieid: any): Observable<any> {
+  /**
+   * Makes an API call to add a movie the list of favorite movies
+   * @param movieid 
+   * @returns status message: success or error
+   */
   addMovie(movieid: any): Observable<any> {
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -144,19 +178,11 @@ export class FetchApiDataService {
       );
   }
 
-  // Edit user
-  // editUser(user: any): Observable<any> {
-  //   const token = localStorage.getItem('token');
-  //   return this.http.put(apiUrl + `users/${user}`, {
-  //     headers: new HttpHeaders(
-  //       {
-  //         Authorization: 'Bearer ' + token,
-  //       })
-  //   }).pipe(
-  //     map(this.extractResponseData),
-  //     catchError(this.handleError)
-  //   );
-  // }
+  /**
+  * Make an APi call to edit the user information
+  * @param userDetails 
+  * @returns status message: success or error
+  */
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -172,19 +198,10 @@ export class FetchApiDataService {
   }
 
 
-  // Delete user 
-  // deleteUser(user: any): Observable<any> {
-  //   const token = localStorage.getItem('token');
-  //   return this.http.delete(apiUrl + `users/${user}`, {
-  //     headers: new HttpHeaders(
-  //       {
-  //         Authorization: 'Bearer ' + token,
-  //       })
-  //   }).pipe(
-  //     map(this.extractResponseData),
-  //     catchError(this.handleError)
-  //   );
-  // }
+  /**
+   * Makes an API call to delete the account of a user
+   * @returns status message: success or error
+   */
   deleteUser(): Observable<any> {
     let user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -199,8 +216,11 @@ export class FetchApiDataService {
   }
 
 
-  // Delete a movie from the favorite movies
-  // deleteMovie(user: any, movieid: any): Observable<any> {
+  /**
+   * Makes an APi call to delete a movie from the favorite movies
+   * @param movieid 
+   * @returns status message: success or error
+   */
   deleteMovie(movieid: any): Observable<any> {
     const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -216,13 +236,21 @@ export class FetchApiDataService {
   }
 
 
-
-  // Non-typed response extraction
+  /**
+     * Non-typed response extraction
+     * @param res 
+     * @returns body of response
+     */// Non-typed response extraction
   private extractResponseData(res: Response | Object): any {
     const body = res;
     return body || {};
   }
 
+  /**
+   * 
+   * @param error 
+   * @returns status of an error
+   */
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);

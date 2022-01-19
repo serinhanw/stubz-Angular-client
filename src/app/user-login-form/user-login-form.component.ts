@@ -7,8 +7,6 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { style } from '@angular/animations';
-import { getCurrencySymbol } from '@angular/common';
 
 @Component({
   selector: 'app-user-login-form',
@@ -17,8 +15,11 @@ import { getCurrencySymbol } from '@angular/common';
 })
 
 export class UserLoginFormComponent implements OnInit {
-
+  /**
+   * Required input fields for the login form
+   */
   @Input() userData = { username: '', password: '' };
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -29,14 +30,14 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
-  loginUser(): void {
+  /**
+   * This is the function responsible for sending the form inputs to the backend
+   */  loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       // Logic for a successful user registration goes here! (To be implemented)
       this.dialogRef.close(); // This will close the modal on success!
       console.log(response);
       // Add the current user and token to localStorage
-      // localStorage.setItem('user', response.user.Username);
       localStorage.setItem('user', response.user.username);
 
       localStorage.setItem('token', response.token);

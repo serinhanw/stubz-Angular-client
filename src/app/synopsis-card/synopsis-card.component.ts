@@ -8,6 +8,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class SynopsisCardComponent implements OnInit {
 
+  /**
+  * Inject, gets the synopsis details from the movie object
+  */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {

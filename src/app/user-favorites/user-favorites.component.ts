@@ -46,6 +46,11 @@ export class UserFavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the genre dialog
+   * @param Name 
+   * @param Description 
+   */
   openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(GenreCardComponent, {
       data: { Name, Description },
@@ -53,6 +58,12 @@ export class UserFavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the director dialog
+   * @param Name 
+   * @param Bio 
+   * @param Birthyear
+   */
   openDirectorDialog(
     Name: string,
     Bio: string,
@@ -68,6 +79,12 @@ export class UserFavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the synopsis dialog
+   * @param Title 
+   * @param Description 
+   * @param Year 
+   */
   openSynopsisDialog(
     Title: string,
     Description: string,
@@ -83,6 +100,9 @@ export class UserFavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   * Gets the user's favorite movies from backend
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.movies = res;
@@ -96,6 +116,11 @@ export class UserFavoritesComponent implements OnInit {
     console.log(this.favoriteMovies);
   }
 
+  /**
+   * Removes a movie from the list of favorites
+   * @param movieid 
+   * @param title 
+   */
   removeFromFavorites(movieid: string, title: string): void {
     this.fetchApiData
       // .deleteMovie(this.user.username, movieid)
@@ -114,14 +139,4 @@ export class UserFavoritesComponent implements OnInit {
     // this.getUserFavorites();
   }
 
-
-  // isFavorites(movieId: string): boolean {
-  //   return this.favoriteMovies.some((movie) => movie._id === movieId);
-  // }
-
-  // toggleFavorites(movie: any): void {
-  //   this.isFavorites(movie._id)
-  //     ? this.removeFromFavorites(movie._id, movie.Title)
-  //     : this.addToFavorites(movie._id, movie.Title);
-  // }
 }

@@ -28,13 +28,14 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This is the function responsible for sending the form inputs to the backend
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       // Logic for a successful user registration goes here!
       this.dialogRef.close(); // This will close the modal on success!
       // console.log(response);
-
       // localStorage.setItem('user', response.user.username);
       // localStorage.setItem('token', response.token);
 

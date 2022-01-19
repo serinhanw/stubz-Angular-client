@@ -8,6 +8,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DirectorCardComponent implements OnInit {
 
+  /**
+  * Inject, gets the director details from the movie object
+  */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
