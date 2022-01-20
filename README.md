@@ -1,6 +1,13 @@
+![Demo image of the application](https://github.com/serinhanw/stubz-Angular-client/blob/main/demo/demo.gif)
+
 # StubzAngularClient
+This project is an Angular version for the client side of the application Stubz. It uses the existing server-side code (REST API and database), with supporting documentation.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
+## Live Demo
+
+[Click here for live demo](https://serinhanw.github.io/stubz-Angular-client/welcome)
 
 ## Development server
 
